@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>(주)프레인글로벌 재무 대시보드</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <div class="eyebrow">간이 재무 대시보드 · 2007–2025</div>
+        <h1>(주)프레인글로벌 재무 데이터 웹사이트</h1>
+      </div>
+      <div>
+        <label for="yearSelect">연도 선택</label>
+        <select id="yearSelect"></select>
+      </div>
+    </div>
+
+    <div class="grid cards">
+      <div class="card pad"><div class="kicker">매출액</div><div class="big" id="revenueValue"></div><div class="small" id="revenueChange"></div></div>
+      <div class="card pad"><div class="kicker">영업이익</div><div class="big" id="opValue"></div><div class="small" id="opChange"></div></div>
+      <div class="card pad"><div class="kicker">당기순이익</div><div class="big" id="niValue"></div><div class="small" id="niChange"></div></div>
+      <div class="card pad"><div class="kicker">자본총계</div><div class="big" id="equityValue"></div><div class="small" id="equityChange"></div></div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="detail">상세 데이터</button>
+      <button class="tab-btn" data-tab="balance">재무상태</button>
+      <button class="tab-btn" data-tab="growth">성장추이</button>
+      <button class="tab-btn" data-tab="profitability">수익성지표</button>
+    </div>
+
+    <div id="detail" class="tab-content active">
+      <div class="card pad">
+        <div class="kicker">연도별 상세 데이터</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>연도</th><th>매출액</th><th>영업이익</th><th>당기순이익</th><th>자산총계</th><th>자본총계</th>
+                <th>매출원가율</th><th>판관비율</th><th>영업이익률</th><th>순이익률</th><th>ROE</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="balance" class="tab-content">
+      <div class="card chart-card">
+        <h3 class="chart-title">자산·부채·자본</h3>
+        <p class="chart-sub">연도별 재무상태표 요약</p>
+        <div class="chart-wrap"><canvas id="balanceChart"></canvas></div>
+      </div>
+    </div>
+
+    <div id="growth" class="tab-content">
+      <div class="grid third">
+        <div class="card chart-card"><h3 class="chart-title">매출액 추이</h3><p class="chart-sub">연도별 막대그래프</p><div class="chart-wrap"><canvas id="revenueChart"></canvas></div></div>
+        <div class="card chart-card"><h3 class="chart-title">영업이익 추이</h3><p class="chart-sub">연도별 막대그래프</p><div class="chart-wrap"><canvas id="opChart"></canvas></div></div>
+        <div class="card chart-card"><h3 class="chart-title">당기순이익 추이</h3><p class="chart-sub">연도별 막대그래프</p><div class="chart-wrap"><canvas id="niChart"></canvas></div></div>
+      </div>
+    </div>
+
+    <div id="profitability" class="tab-content">
+      <div class="grid four">
+        <div class="card chart-card"><h3 class="chart-title">매출원가율</h3><p class="chart-sub">연도별 꺾은선그래프</p><div class="chart-wrap"><canvas id="cogsChart"></canvas></div></div>
+        <div class="card chart-card"><h3 class="chart-title">판관비율</h3><p class="chart-sub">연도별 꺾은선그래프</p><div class="chart-wrap"><canvas id="sgaChart"></canvas></div></div>
+        <div class="card chart-card"><h3 class="chart-title">영업이익률</h3><p class="chart-sub">연도별 꺾은선그래프</p><div class="chart-wrap"><canvas id="opmChart"></canvas></div></div>
+        <div class="card chart-card"><h3 class="chart-title">순이익률</h3><p class="chart-sub">연도별 꺾은선그래프</p><div class="chart-wrap"><canvas id="npmChart"></canvas></div></div>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
